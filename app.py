@@ -16,7 +16,7 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.filters import CommandStart, Command, CommandObject
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, PreCheckoutQuery, LabeledPrice
 from aiogram.filters import Command
-from aiogram.types import Message
+from aiogram.types import Message, FSInputFile
 import os
 # --- Конфигурация ---
 API_TOKEN = '8302691022:AAHxJHBmqtstXhyb6ZhnDeGSREqOAqvb1qk'       
@@ -1735,6 +1735,7 @@ async def command_fish_handler(message: Message):
     await message.answer(answer_text, parse_mode="HTML")
 
 
+
 @dp.message(Command("backup"))
 async def backup_db(message: Message):
     if message.from_user.id not in ADMIN_IDS:
@@ -1744,11 +1745,12 @@ async def backup_db(message: Message):
     if os.path.exists(DB_PATH):
         await message.answer("📦 Отправляю базу данных...")
         try:
-            with open(DB_PATH, "rb") as f:
-                await message.answer_document(f)
-            await message.answer("✅ Готово! База данных отправлена.")
+            # создаём объект файла с явным именем
+            document = FSInputFile(path=DB_PATH, filename="bot_data.db")
+            await message.answer_document(document)
+            await message.answer("✅ Файл bot_data.db успешно отправлен!")
         except Exception as e:
-            await message.answer(f"⚠️ Ошибка при отправке файла: {e}")
+            await message.answer(f"⚠️ Ошибка при отправке файла:\n<code>{e}</code>")
     else:
         await message.answer("❌ Файл bot_data.db не найден.")
         
