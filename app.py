@@ -958,12 +958,12 @@ async def command_hunt_handler(message: Message):
         answer_text += f"\nЛимит сбросится через <b>{hours}ч {mins}м {secs}с</b>."
 
     if random.random() < 0.1:
-        curse = random.choice(["curse_weakness", "curse_vision", "curse_vampire"])
+        curse = random.choice(["curse_weakness", "curse_vision"])
         await set_user_effect(message.from_user.id, curse, 10)  # 10 минут
         curse_name = {
             "curse_weakness": "💀 Проклятие слабости (-50% награды)",
-            "curse_vision": "👁 Призрачное видение (следующая награда ×3)",
-            "curse_vampire": "🩸 Вампиризм (10% награды уходит другому игроку)"
+            "curse_vision": "👁 Призрачное видение (следующая награда ×3)"
+           # "curse_vampire": "🩸 Вампиризм (10% награды уходит другому игроку)"
         }[curse]
         await message.answer(f"⚠️ {curse_name} действует 10 минут!", parse_mode="HTML")
 
@@ -1001,7 +1001,7 @@ async def command_my_curses(message: Message):
     effect_names = {
         "curse_weakness": "💀 Проклятие слабости\n−50% награды с действий.",
         "curse_vision": "👁 Призрачное видение\nСледующая награда ×3.",
-        "curse_vampire": "🩸 Вампиризм\n10% ваших наград уходит другому игроку.",
+        #"curse_vampire": "🩸 Вампиризм\n10% ваших наград уходит другому игроку.",
         "blessing_light": "🌕 Благословение света\n+50% к наградам на 10 минут.",
     }
 
