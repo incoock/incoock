@@ -1737,12 +1737,14 @@ async def command_fish_handler(message: Message):
 
 @dp.message(Command("backup"))
 async def backup_db(message: Message):
+    print("Команда /backup получена от", message.from_user.id)
+
     if message.from_user.id not in ADMIN_IDS:
         await message.answer("❌ У вас нет доступа к этой команде.")
         return
     
     if os.path.exists(DB_PATH):
-        # Отправляем файл базы данных
+        await message.answer("📦 Отправляю базу данных...")
         await message.answer_document(open(DB_PATH, "rb"))
     else:
         await message.answer("❌ Файл bot_data.db не найден.")
@@ -3138,3 +3140,7 @@ if __name__ == '__main__':
     try: asyncio.run(main())
     except KeyboardInterrupt: print("Bot stopped by admin.")
     except Exception as e: print(f"Critical error during bot execution: {e}")
+
+if __name__ == "__main__":
+    import asyncio
+    asyncio.run(dp.start_polling(bot))
