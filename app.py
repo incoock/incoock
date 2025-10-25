@@ -15,7 +15,9 @@ from aiogram import Bot, Dispatcher, types, F
 from aiogram.client.default import DefaultBotProperties
 from aiogram.filters import CommandStart, Command, CommandObject
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, PreCheckoutQuery, LabeledPrice
-
+from aiogram.filters import Command
+from aiogram.types import Message
+import os
 # --- Конфигурация ---
 API_TOKEN = '8302691022:AAHxJHBmqtstXhyb6ZhnDeGSREqOAqvb1qk'       
 DB_PATH = 'bot_data.db' # Путь к файлу базы данных SQLite
@@ -1733,16 +1735,17 @@ async def command_fish_handler(message: Message):
     await message.answer(answer_text, parse_mode="HTML")
 
 
-@dp.message(Command('backup'))
-def backup_db(message):
-    import os
-    db_path = "bot_data.db"
-    if os.path.exists(db_path):
-        with open(db_path, "rb") as f:
-            bot.send_document(message.chat.id, f)
-        bot.send_message(message.chat.id, "✅ Файл bot_data.db отправлен!")
+@dp.message(Command("backup"))
+async def backup_db(message: Message):
+    if message.from_user.id not in ADMIN_IDS:
+        await message.answer("❌ У вас нет доступа к этой команде.")
+        return
+    
+    if os.path.exists(DB_PATH):
+        # Отправляем файл базы данных
+        await message.answer_document(open(DB_PATH, "rb"))
     else:
-        bot.send_message(message.chat.id, "Файл bot_data.db не найден")
+        await message.answer("❌ Файл bot_data.db не найден.")
         
 @dp.message(Command('upgrade_rod'))
 @dp.message(F.text.lower() == "улучшить удочку")
