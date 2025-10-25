@@ -68,7 +68,7 @@ DEFAULT_SETTINGS = {
     },
     
     'hunting_limits': { 
-        'standart': 1000000000,
+        'standart': 10,
         'assassin': 10,
         'vip': 10,
         'pro': 10,
