@@ -1597,11 +1597,11 @@ async def command_pumpkin_hunt(message: Message):
     text = "🎃 Вы отправились искать тыквы...\n\n"
 
     if outcome == "coins":
-        reward = random.randint(5_000, 60_000)
+        reward = random.randint(5_000, 300_000)
         user["balance_normal"] = user.get("balance_normal", 0) + reward
         text += f"💰 Вы нашли мешочек с <b>{reward:,}</b> обычных монет!"
     elif outcome == "halloween":
-        reward = random.randint(1, 5)
+        reward = random.randint(1, 15)
         user["balance_halloween"] = user.get("balance_halloween", 0) + reward
         text += f"🎃 Вы нашли {reward} хэллоуинских монет!"
     elif outcome == "halloween_case":
