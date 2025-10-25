@@ -79,7 +79,7 @@ DEFAULT_SETTINGS = {
 
     
     'mining_limits': { # Лимиты вскапываний за интервал по донат-статусам
-        'standart': 20,
+        'standart': 1000000,
         'assassin': 20,
         'vip': 20,
         'pro': 20,
