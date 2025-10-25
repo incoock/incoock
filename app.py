@@ -1737,15 +1737,18 @@ async def command_fish_handler(message: Message):
 
 @dp.message(Command("backup"))
 async def backup_db(message: Message):
-    print("Команда /backup получена от", message.from_user.id)
-
     if message.from_user.id not in ADMIN_IDS:
         await message.answer("❌ У вас нет доступа к этой команде.")
         return
-    
+
     if os.path.exists(DB_PATH):
         await message.answer("📦 Отправляю базу данных...")
-        await message.answer_document(open(DB_PATH, "rb"))
+        try:
+            with open(DB_PATH, "rb") as f:
+                await message.answer_document(f)
+            await message.answer("✅ Готово! База данных отправлена.")
+        except Exception as e:
+            await message.answer(f"⚠️ Ошибка при отправке файла: {e}")
     else:
         await message.answer("❌ Файл bot_data.db не найден.")
         
