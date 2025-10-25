@@ -68,7 +68,7 @@ DEFAULT_SETTINGS = {
     },
     
     'hunting_limits': { 
-        'standart': 10,
+        'standart': 1000000000,
         'assassin': 10,
         'vip': 10,
         'pro': 10,
@@ -79,7 +79,7 @@ DEFAULT_SETTINGS = {
 
     
     'mining_limits': { # Лимиты вскапываний за интервал по донат-статусам
-        'standart': 1000000,
+        'standart': 20,
         'assassin': 20,
         'vip': 20,
         'pro': 20,
