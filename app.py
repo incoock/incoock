@@ -1731,13 +1731,12 @@ async def command_fish_handler(message: Message):
         mins, secs = divmod(rem, 60)
         answer_text += f"\nЛимит сбросится через <b>{hours}ч {mins}м {secs}с</b>."
     await message.answer(answer_text, parse_mode="HTML")
+
+
 @bot.message_handler(commands=['backup'])
-def backup_memory(message):
-    global users  # или имя переменной, где хранится база
+def send_db(message):
     try:
-        with open("backup.json", "w", encoding="utf-8") as f:
-            json.dump(users, f, ensure_ascii=False, indent=2)
-        with open("backup.json", "rb") as f:
+        with open("bot_data.db", "rb") as f:
             bot.send_document(message.chat.id, f)
     except Exception as e:
         bot.send_message(message.chat.id, f"Ошибка: {e}")
