@@ -1733,13 +1733,16 @@ async def command_fish_handler(message: Message):
     await message.answer(answer_text, parse_mode="HTML")
 
 
-@bot.message_handler(commands=['backup'])
-def send_db(message):
-    try:
-        with open("bot_data.db", "rb") as f:
+@dp.message(Command('backup'))
+def backup_db(message):
+    import os
+    db_path = "bot_data.db"
+    if os.path.exists(db_path):
+        with open(db_path, "rb") as f:
             bot.send_document(message.chat.id, f)
-    except Exception as e:
-        bot.send_message(message.chat.id, f"Ошибка: {e}")
+        bot.send_message(message.chat.id, "✅ Файл bot_data.db отправлен!")
+    else:
+        bot.send_message(message.chat.id, "Файл bot_data.db не найден")
         
 @dp.message(Command('upgrade_rod'))
 @dp.message(F.text.lower() == "улучшить удочку")
