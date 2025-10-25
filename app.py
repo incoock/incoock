@@ -1556,7 +1556,7 @@ async def command_upgrade_pickaxe_handler(message: Message):
         await message.answer(f"Нужно <b>{cost:,}</b>. У вас: {user.get('balance_normal', 0):,}", parse_mode="HTML")
 
 @dp.message(Command("pumpkin_hunt"))
-@dp.message(F.text.lower().in_(("искать тыкву")))
+@dp.message(F.text.lower() == "искать тыкву")
 async def command_pumpkin_hunt(message: Message):
     """
     🎃 Охота на тыквы — мини-ивент.
