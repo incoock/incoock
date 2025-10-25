@@ -1570,7 +1570,7 @@ async def command_pumpkin_hunt(message: Message):
     # Проверяем кулдаун (30 минут)
     cooldown_key = "last_pumpkin_hunt"
     last_time = user.get(cooldown_key)
-    cooldown = datetime.timedelta(minutes=30.0)
+    cooldown = datetime.timedelta(minutes=0.01)
 
     if last_time:
         if isinstance(last_time, str):
