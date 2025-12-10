@@ -2190,7 +2190,7 @@ async def command_donate_handler(message: Message):
         f"Донат кейс - 150р\n"
         f"1 особая монета - 50р\n"
         f"Здесь можно узнать все способности каждого доната: "
-        "<a href='https://telegra.ph/Preimushchestva-donatov-MG-BOT-07-25'>тык</a>\n\n"
+        "<a href='https://telegra.ph/Preimushchestva-donatov-INC-12-10'>тык</a>\n\n"
         f"Здесь можно приобрести донат, выдача всегда моментальная: "
         "<a href='http://t.me/l_I_I_l_l_I_l'>тык</a>\n"
         f"<blockquote>При покупке доната или донат-валюты в личке продавца пришлите скриншот оплаты"
