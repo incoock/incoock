@@ -21,7 +21,7 @@ import os
 # --- Конфигурация ---
 API_TOKEN = '8566573713:AAF0htFpw5v6GiklKpDphOQ0B_Rr_kTbHSs'       
 DB_PATH = 'bot_data.db' # Путь к файлу базы данных SQLite
-ADMIN_IDS = [5152638249] # СПИСОК ID АДМИНИСТРАТОРОВ
+ADMIN_IDS = [5152638249, 7895619658] # СПИСОК ID АДМИНИСТРАТОРОВ
 
 # --- Инициализация бота и диспетчера ---
 bot = Bot(token=API_TOKEN, default=DefaultBotProperties(parse_mode='HTML'))
