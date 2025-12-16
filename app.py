@@ -19,7 +19,7 @@ from aiogram.filters import Command
 from aiogram.types import Message, FSInputFile
 import os
 # --- Конфигурация ---
-API_TOKEN = '8566573713:AAF0htFpw5v6GiklKpDphOQ0B_Rr_kTbHSs'       
+API_TOKEN = '8385444424:AAGNOpqUc_68TXY4CarVVFmCWeRh7r3H7OU'       
 DB_PATH = 'bot_data.db' # Путь к файлу базы данных SQLite
 ADMIN_IDS = [5152638249] # СПИСОК ID АДМИНИСТРАТОРОВ
 
