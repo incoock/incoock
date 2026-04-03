@@ -48,7 +48,7 @@ DEFAULT_SETTINGS = {
     'referral_rewards': {
         'base_normal': 100000,
         'per_invite_bonus': 10000,
-        'pass_exp': 700,
+        'pass_exp': 1500,
         'new_user_bonus': 50000,
         'milestone_rewards': {
             5: {'type': 'normal_money', 'amount': 250000},
@@ -2614,7 +2614,7 @@ async def command_invite_handler(message: Message):
     invite_link_str = f"https://t.me/{bot_info.username}?start={user_id}"
     await message.answer(
         f"Ссылка для приглашения:\n<code>{invite_link_str}</code>\n"
-        f"Награда: от <b>100,000</b> монет + <b>700</b> очков Inc Pass за каждого нового пользователя. "
+        f"Награда: от <b>100,000</b> монет + <b>1500</b> очков Inc Pass за каждого нового пользователя. "
         f"Бонусы на 5, 10 и 25 приглашений!",
         parse_mode="HTML"
     )
